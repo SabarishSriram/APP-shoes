@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ShoppingCart, Search, Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 function Navbar() {
-    const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
+
 
     
   return (

@@ -10,10 +10,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router";
 
 function Dashboard() {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate=useNavigate()
 
   return (
     <aside
@@ -23,7 +25,7 @@ function Dashboard() {
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <div className="flex justify-between items-center lg:hidden">
+      <div className="flex cursor-pointer justify-between items-center lg:hidden">
         <h2 className="text-xl font-semibold">Categories</h2>
         <Button variant="ghost" size="icon" onClick={toggleSidebar}>
           <X className="h-5 w-5" />
@@ -31,10 +33,10 @@ function Dashboard() {
       </div>
       <nav className="mt-5">
         <ul className="space-y-2 flex-col flex">
-          <a href="/" className="text-black hover:text-gray-900 bg-white py-3 rounded-xl px-2 hover:bg-slate-200">
+          <a onClick={()=>navigate("/")} className="text-black hover:text-gray-900 cursor-pointer bg-white py-3 rounded-xl px-2 hover:bg-slate-200">
             Home
           </a>
-          <a href="/addtocart" className="text-black hover:text-gray-900 bg-white py-3 rounded-xl px-2 hover:bg-slate-200">
+          <a onClick={() => navigate("/addtocart")} className="text-black hover:text-gray-900 bg-white cursor-pointer py-3 rounded-xl px-2 hover:bg-slate-200">
             Add To Cart
           </a>
           

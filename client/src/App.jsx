@@ -5,8 +5,15 @@ import Footer from "./components/Footer.jsx";
 import { Outlet, RouterProvider } from "react-router-dom";
 import AddToCart from "./components/AddToCart.jsx";
 import { createBrowserRouter } from "react-router-dom";
+import { useState } from "react";
+import Payment from "./components/Payment.jsx";
 
 export default function ShoeStore() {
+  const [cart, setCart] = useState([]);
+
+  const removeFromCart = (shoeToRemove) => {
+    setCart(cart.filter(shoe => shoe.id !== shoeToRemove.id));
+  };
   const Layout = () => {
     return (
       <div className="flex flex-col min-h-screen">
@@ -26,14 +33,18 @@ export default function ShoeStore() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: <Home cart={cart} setCart={setCart} />,
         },
         {
           path: "/addtocart",
-          element: <AddToCart />,
+          element: <AddToCart removeFromCart={removeFromCart} cart={cart} />,
         },
       ],
-    }
+    },
+    {
+      path: "/payment",
+      element: <Payment />,
+    },
   ]);
   return <RouterProvider router={router} />;
 }

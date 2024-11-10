@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {shoes} from "../lib/shoes.js"
+import { shoes } from "../lib/shoes.js";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-
-function Home() {
+import { useNavigate } from "react-router";
+function Home({ cart, setCart }) {
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   // Use an async function within the useEffect
@@ -15,6 +15,11 @@ function Home() {
 
   //   fetchData();
   // }, []);
+  const navigate = useNavigate()
+  const handleclick = (shoe) => {
+    setCart([...cart, shoe]);
+    console.log(cart);
+  };
 
   return (
     <main className="flex-grow container mx-auto px-4 py-8 lg:ml-6">
@@ -29,7 +34,9 @@ function Home() {
             <div className="p-4">
               <h2 className="text-lg font-semibold">{shoe.name}</h2>
               <p className="text-gray-600">${shoe.price}</p>
-              <Button className="w-full mt-4">Add to Cart</Button>
+              <Button onClick={() => handleclick(shoe)} className="w-full mt-4">
+                Add to Cart
+              </Button>
             </div>
           </div>
         ))}
