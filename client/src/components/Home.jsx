@@ -7,17 +7,14 @@ import { useToast } from "@/hooks/use-toast"
 
 function Home({ cart, setCart }) {
   const { toast } = useToast()
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   // Use an async function within the useEffect
-  //   const fetchData = async () => {
-  //     const response = await axios.get("http://localhost:8080/products");
-  //     setData(response.data);
-  //     console.log(data);
-  //   };
-
-  //   fetchData();
-  // }, []);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:8080/products");
+      setData(response.data);
+      console.log(data);
+    };
+  }, []);
   const navigate = useNavigate()
   const handleclick = (shoe) => {
     setCart([...cart, shoe]);
