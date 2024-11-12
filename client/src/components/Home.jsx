@@ -24,6 +24,7 @@ function Home({ cart, setCart }) {
     console.log(cart);
     toast({
       title: "Added to Cart",
+      className: "bg-black text-white border border-black",
     })
   };
 

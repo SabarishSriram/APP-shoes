@@ -18,12 +18,17 @@ function Dashboard() {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
+  const [background, setbackground] = useState(1)
 
+  const handleclick = (id, route) => {
+    navigate(route);
+    setbackground(id)
+  };
   return (
     <aside
       className={`${
         sidebarOpen ? "block" : "hidden"
-      } lg:block w-64 bg-gray-100 p-4 fixed inset-y-0 left-0 z-10 overflow-y-auto transition-all duration-300 ease-in-out lg:relative lg:translate-x-0 ${
+      } lg:block w-64 bg-white shadow-xl p-4 fixed inset-y-0 left-0 z-10 overflow-y-auto transition-all duration-300 ease-in-out lg:relative lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -36,15 +41,15 @@ function Dashboard() {
       <nav className="mt-5">
         <ul className="space-y-2 flex-col flex">
           <a
-            onClick={() => navigate("/")}
-            className="text-black hover:text-gray-900 flex items-center gap-3 cursor-pointer bg-white py-3 rounded-xl px-2 hover:bg-slate-200"
+            onClick={() => handleclick(1, "/")}
+            className={`${background===1?"bg-black text-white flex items-center gap-3 cursor-pointer  py-3 rounded-xl px-2 hover:bg-slate-700":"hover:text-gray-900 bg-white text-black flex items-center gap-3 cursor-pointer  py-3 rounded-xl px-2 hover:bg-slate-200"} `}
           >
             <FaHome size={20} className="ml-4" />
             Home
           </a>
           <a
-            onClick={() => navigate("/addtocart")}
-            className="text-black hover:text-gray-900 flex items-center gap-3 bg-white cursor-pointer py-3 rounded-xl px-2 hover:bg-slate-200"
+            onClick={() => handleclick(2, "/addtocart")}
+            className={`${background===2?"bg-black text-white flex items-center gap-3 cursor-pointer  py-3 rounded-xl px-2 hover:bg-slate-700":"hover:text-gray-900 bg-white text-black flex items-center gap-3 cursor-pointer  py-3 rounded-xl px-2 hover:bg-slate-200"}`}
           >
             <FaCartShopping size={20} className="ml-4" />
             Cart
