@@ -11,11 +11,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router";
+import { FaHome } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
 
 function Dashboard() {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   return (
     <aside
@@ -33,13 +35,20 @@ function Dashboard() {
       </div>
       <nav className="mt-5">
         <ul className="space-y-2 flex-col flex">
-          <a onClick={()=>navigate("/")} className="text-black hover:text-gray-900 cursor-pointer bg-white py-3 rounded-xl px-2 hover:bg-slate-200">
+          <a
+            onClick={() => navigate("/")}
+            className="text-black hover:text-gray-900 flex items-center gap-3 cursor-pointer bg-white py-3 rounded-xl px-2 hover:bg-slate-200"
+          >
+            <FaHome size={20} className="ml-4" />
             Home
           </a>
-          <a onClick={() => navigate("/addtocart")} className="text-black hover:text-gray-900 bg-white cursor-pointer py-3 rounded-xl px-2 hover:bg-slate-200">
-            Add To Cart
+          <a
+            onClick={() => navigate("/addtocart")}
+            className="text-black hover:text-gray-900 flex items-center gap-3 bg-white cursor-pointer py-3 rounded-xl px-2 hover:bg-slate-200"
+          >
+            <FaCartShopping size={20} className="ml-4" />
+            Cart
           </a>
-          
         </ul>
       </nav>
     </aside>

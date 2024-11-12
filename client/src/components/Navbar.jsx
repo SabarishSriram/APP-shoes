@@ -11,7 +11,7 @@ function Navbar() {
     
   return (
     <div>
-        <header className="sticky top-0 z-20 bg-white border-b">
+        <header className="sticky top-0 z-20 shadow-lg bg-white border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <Button variant="ghost" size="icon" className="mr-2 lg:hidden" onClick={toggleSidebar}>

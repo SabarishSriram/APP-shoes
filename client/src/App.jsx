@@ -7,6 +7,7 @@ import AddToCart from "./components/AddToCart.jsx";
 import { createBrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import Payment from "./components/Payment.jsx";
+import { Toaster } from "@/components/ui/toaster"
 
 export default function ShoeStore() {
   const [cart, setCart] = useState([]);
@@ -23,6 +24,7 @@ export default function ShoeStore() {
           <Outlet />
         </div>
         <Footer />
+        <Toaster/>
       </div>
     );
   };

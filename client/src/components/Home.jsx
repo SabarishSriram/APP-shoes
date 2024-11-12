@@ -3,7 +3,10 @@ import { shoes } from "../lib/shoes.js";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useToast } from "@/hooks/use-toast"
+
 function Home({ cart, setCart }) {
+  const { toast } = useToast()
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   // Use an async function within the useEffect
@@ -19,6 +22,9 @@ function Home({ cart, setCart }) {
   const handleclick = (shoe) => {
     setCart([...cart, shoe]);
     console.log(cart);
+    toast({
+      title: "Added to Cart",
+    })
   };
 
   return (
